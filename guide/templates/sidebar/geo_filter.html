@@ -1,0 +1,32 @@
+<ul id="geo_filter" class="nav flex-column list-group">
+        <li class="nav-item list-group-item">
+                        <span class="main-country-filter box bg-dark-1 no-mg" name="main-country-filter">
+                            <span class="button m-lg-1">
+                                Фильтрация по странам
+                            </span>
+                        </span>
+            <ul class="main-nested nested">
+                {% for country in countries_list %}
+                    <li class="nav-item bg-dark-1">
+                                    <span class="box bg-dark-1" id="countryid={{ country.id }}">
+                                            <span class="button m-lg-1">
+                                                {{ country.Name }}
+                                            </span>
+                                    </span>
+
+                        <ul class="nested">
+                            <li class="list-group-item bg-dark-1"><a class="button-inner countryid={{ country.id }}"
+                                                                     href="{% url 'filter_by_country' country.id %}">Все
+                                города</a></li>
+                            {% for city in country.city_set.all %}
+                                <li class="list-group-item bg-dark-1"><a class="button-inner"
+                                                                         href="{% url 'filter_by_city' city.id %}"
+                                                                         id="cityid={{ city.id }}">{{ city.Name }}</a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </li>
+    </ul>

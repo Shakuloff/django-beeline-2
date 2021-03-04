@@ -1,0 +1,22 @@
+<ul id="job_filter" class="nav flex-column list-group">
+    <li class="nav-item list-group-item">
+            <span class="main-job-filter box bg-dark-1 no-mg" name="main-country-filter">
+                <span class="button m-lg-1">
+                    Фильтрация по должности
+                </span>
+            </span>
+        <ul class="main-nested-job nested">
+            {% for job in jobs_filter %}
+                <li class="nav-item bg-dark-1">
+                        <span class="bg-dark-1 job-box">
+                                <span class="button m-lg-1">
+                                    <a class="button-inner job-item-link jobname={{ job.Job }}"
+                                       href="{% url 'filter_by_job' job.Job %}"
+                                       id="jobname={{ job.Job }}">{{ job.Job }}</a>
+                                </span>
+                        </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </li>
+</ul>

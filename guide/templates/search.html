@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <h1>sEARCH</h1>
+    <div class="container-fluid">
+        <div class="row">
+            {% include 'sidebar.html' %}
+
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+                <h2>Section title</h2>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                            <th>Header</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for contact in page_obj %}
+
+                            <tr>
+                                <td>{{ contact.FirstName }}</td>
+                                <td>{{ contact.FamilyName }}</td>
+                                <td>{{ contact.Patronymic }}</td>
+                                <td>{{ contact.PhoneNumber }}</td>
+                                <td>text</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                  {% if page_obj.has_previous %}
+{#                            <a href="?page=1">&laquo; Первая</a>#}
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.previous_page_number }} {% if request.GET.q %}&q={{ request.GET.q }}{% endif %}">
+                              Пред
+                          </a>
+                      </li>
+                  {% endif %}
+                      <li class="page-item">
+                          <a class="page-link" href="#">
+                              {{ page_obj.number }}
+                          </a>
+                      </li>
+                  {% if page_obj.has_next %}
+{#                      <li class="page-item">#}
+{#                          <a class="page-link" href="#">#}
+{#                              {{ 20 // 7 }}#}
+{#                          </a>#}
+{#                      </li>#}
+                      <li class="page-item">
+                          <a class="page-link" href="?page={{ page_obj.next_page_number }}">
+                              След
+                          </a>
+                      </li>
+                  {% endif %}
+{#                <li class="page-item"><a class="page-link" href="#">1</a></li>#}
+{#                <li class="page-item"><a class="page-link" href="#">2</a></li>#}
+{#                <li class="page-item"><a class="page-link" href="#">3</a></li>#}
+
+              </ul>
+            </nav>
+
+{#                <div class="pagination">#}
+{#                    <span class="step-links">#}
+{#                        {% if page_obj.has_previous %}#}
+{#                            <a href="?page=1">&laquo; Первая</a>#}
+{#                            <a href="?page={{ page_obj.previous_page_number }}">Пред</a>#}
+{#                        {% endif %}#}
+{##}
+{#                        <span class="current">#}
+{#                            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.#}
+{#                        </span>#}
+{##}
+{#                        {% if page_obj.has_next %}#}
+{#                            <a href="?page={{ page_obj.next_page_number }}">След</a>#}
+{#                            <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>#}
+{#                        {% endif %}#}
+{#                    </span>#}
+{#                </div>#}
+            </main>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+
+</body>
+</html>

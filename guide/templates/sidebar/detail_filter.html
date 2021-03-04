@@ -1,0 +1,106 @@
+<ul id="detail_filter" class="nav flex-column list-group">
+        <li class="nav-item list-group-item">
+            <span class="main-detail-filter box bg-dark-1 no-mg" name="main-country-filter">
+                <span class="button m-lg-1">
+                    Подробная фильтрация
+                </span>
+            </span>
+        <ul class="main-nested-detail nested bg-dark-1">
+            <form action="{% url 'search_filter' %}" method="get">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item bg-dark-1">
+                    <select class="form-select" aria-label="Default select example" name="Gender">
+                        <option selected value="">Пол</option>
+                        <option value="Мужской">Мужской</option>
+                        <option value="Женский">Женский</option>
+                    </select>
+                </li>
+                <li class="list-group-item bg-dark-1">
+                    <select class="form-select" aria-label="Default select example" name="Job">
+                    {% for job in jobs_filter %}
+                        {% if forloop.first %}
+                            <option selected value="">Выберите профессию</option>
+                        {% endif %}
+                        <option value="{{ job.Job }}">{{ job.Job }}</option>
+                    {% endfor %}
+                </select>
+                </li>
+                <li class="list-group-item bg-dark-1">
+                    <select class="form-select" aria-label="Default select example" name="Countries">
+                    {% for country in countries_list %}
+                        {% if forloop.first %}
+                            <option selected value="">Выберите страну</option>
+                        {% endif %}
+                        <option value="{{ country.id }}">{{ country.Name }}</option>
+                    {% endfor %}
+                </select>
+                </li>
+                <li class="list-group-item bg-dark-1">
+                    <select class="form-select" aria-label="Default select example" name="Cities">
+                    {% for country in countries_list %}
+                        {% if forloop.first %}
+                                <option selected value="">Выберите город</option>
+                        {% endif %}
+                        {% for city in country.city_set.all %}
+                            <option value="{{ city.id }}">{{ city.Name }}</option>
+                        {% endfor %}
+                    {% endfor %}
+                </select>
+                </li>
+                <li class="list-group-item bg-dark-1">
+                    <div>
+                    <label for="SalaryRange" class="form-label text-light">Зарплата от</label>
+                    <input name="Salary" type="range" class="form-range" min="{% for key, value in min_salary.items %}{{ value }}{% endfor %}" max="{% for key, value in max_salary.items %}{{ value }}{% endfor %}" value="1" id="SalaryRange">
+                    <span id="output">28</span>
+                </div>
+                </li>
+                <li class="list-group-item bg-dark-1">
+                    <button class="btn btn-primary" type="submit">Фильтр</button>
+                </li>
+            </ul>
+{#                <select class="form-select" aria-label="Default select example" name="Gender">#}
+{#                    <option selected value="">Пол</option>#}
+{#                    <option value="Мужской">Мужской</option>#}
+{#                    <option value="Женский">Женский</option>#}
+{#                </select>#}
+{#                <select class="form-select" aria-label="Default select example" name="Salary">#}
+{#                    <option selected value="">ЗП</option>#}
+{#                    <option value="30000">30000</option>#}
+{#                    <option value="50000">50000</option>#}
+{#                </select>#}
+{#                <select class="form-select" aria-label="Default select example" name="Job">#}
+{#                    {% for job in jobs_filter %}#}
+{#                        {% if forloop.first %}#}
+{#                            <option selected value="">Выберите профессию</option>#}
+{#                        {% endif %}#}
+{#                        <option value="{{ job.Job }}">{{ job.Job }}</option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#                <select class="form-select" aria-label="Default select example" name="Countries">#}
+{#                    {% for country in countries_list %}#}
+{#                        {% if forloop.first %}#}
+{#                            <option selected value="">Выберите страну</option>#}
+{#                        {% endif %}#}
+{#                        <option value="{{ country.id }}">{{ country.Name }}</option>#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#                <select class="form-select" aria-label="Default select example" name="Cities">#}
+{#                    {% for country in countries_list %}#}
+{#                        {% if forloop.first %}#}
+{#                                <option selected value="">Выберите город</option>#}
+{#                        {% endif %}#}
+{#                        {% for city in country.city_set.all %}#}
+{#                            <option value="{{ city.id }}">{{ city.Name }}</option>#}
+{#                        {% endfor %}#}
+{#                    {% endfor %}#}
+{#                </select>#}
+{#                <div>#}
+{#                    <label for="SalaryRange" class="form-label">Зарплата</label>#}
+{#                    <input name="Salary" type="range" class="form-range" min="{% for key, value in min_salary.items %}{{ value }}{% endfor %}" max="{% for key, value in max_salary.items %}{{ value }}{% endfor %}" value="" id="SalaryRange">#}
+{#                    <span id="output" style="font-weight:bold;color:#ff0000">63</span>#}
+{#                </div>#}
+{#                <button type="submit">Фильтр</button>#}
+            </form>
+        </ul>
+    </li>
+</ul>

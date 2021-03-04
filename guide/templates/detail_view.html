@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="col-md-9 offset-md-2 col-lg-6 offset-lg-3">
+    <table class="table table-bordered table-striped">
+      <tbody>
+        <tr class="bg-info">
+          <th scope="row">Информация о пользователе:</th>
+          <td>{{ person.FirstName }} {{ person.FamilyName }} {{ person.Patronymic }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Имя</th>
+          <td>{{ person.FirstName }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Фамилия</th>
+          <td>{{ person.FamilyName }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Отчество</th>
+          <td>{{ person.Patronymic }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Пол</th>
+          <td>{{ person.Gender }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Возраст</th>
+          <td>{{ person.Age }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Должность</th>
+          <td>{{ person.Job }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Зарплата</th>
+          <td>{{ person.Salary }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Номер</th>
+          <td>{{ person.PhoneNumber }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Страна</th>
+          <td>{{ person.Countries }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Город</th>
+          <td>{{ person.Cities }}</td>
+        </tr>
+        <tr>
+          <th scope="row">Почтовый индекс</th>
+          <td>{{ person.PostCode }}</td>
+        </tr>
+      </tbody>
+
+</table>
+</div>
+
+{% endblock %}

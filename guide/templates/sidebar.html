@@ -1,0 +1,10 @@
+{% load widget_tweaks %}
+
+<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark-1 sidebar overflow-auto collapse">
+    <div class="d-flex align-items-center justify-content-center mt-3">
+{#        <button class="btn btn-danger">Админ панель</button>#}
+        <a class="btn btn-danger" href="/admin">Админ панель</a>
+    </div>
+    {% include 'sidebar/geo_filter.html'%}
+    {% include 'sidebar/detail_filter.html'%}
+</nav>
